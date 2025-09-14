@@ -6,7 +6,8 @@ const prisma = new PrismaClient();
 @Injectable()
 export class AppService {
   async getHello(): Promise<string> {
-    const users = await prisma.user.findMany();
-    return `Usuarios en DB: ${users.length}`;
+    const empresas = await prisma.company.findMany();
+    const agentes = await prisma.agent.findMany();
+    return `Empresas en DB: ${empresas.length} - Agentes en DB: ${agentes.length}`;
   }
 }
