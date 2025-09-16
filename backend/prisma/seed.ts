@@ -9,6 +9,7 @@ async function main() {
     update: {},
     create: {
       nombre: "Empresa Uno",
+      nit: "0987654321",    
       direccion: "Calle 123",
       telefono: "3001234567",
       email: "empresa1@test.com",
@@ -21,6 +22,7 @@ async function main() {
     update: {},
     create: {
       nombre: "Empresa Dos",
+      nit: "430987654321",
       direccion: "Carrera 45 #10-20",
       telefono: "3019876543",
       email: "empresa2@test.com",

@@ -15,7 +15,7 @@ enum Role {
 model Empresa {
   id        Int      @id @default(autoincrement())
   nombre    String
-  nit       String?  @unique // 👈 primero opcional
+  nit       String  @unique // 👈 primero opcional
   direccion String?
   telefono  String?
   email     String   @unique

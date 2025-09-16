@@ -1,23 +1,13 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Agent` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Company` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "public"."Agent" DROP CONSTRAINT "Agent_companyId_fkey";
-
--- DropTable
-DROP TABLE "public"."Agent";
-
--- DropTable
-DROP TABLE "public"."Company";
+-- CreateEnum
+CREATE TYPE "public"."Role" AS ENUM ('ADMIN', 'USER');
 
 -- CreateTable
 CREATE TABLE "public"."Empresa" (
     "id" SERIAL NOT NULL,
     "nombre" TEXT NOT NULL,
+    "nit" TEXT NOT NULL,
+    "direccion" TEXT,
+    "telefono" TEXT,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -32,13 +22,16 @@ CREATE TABLE "public"."Agente" (
     "nombre" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "role" "public"."Role" NOT NULL DEFAULT 'USER',
-    "empresaId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "role" "public"."Role" NOT NULL DEFAULT 'USER',
+    "empresaId" INTEGER NOT NULL,
 
     CONSTRAINT "Agente_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Empresa_nit_key" ON "public"."Empresa"("nit");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Empresa_email_key" ON "public"."Empresa"("email");
