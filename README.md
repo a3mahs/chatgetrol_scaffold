@@ -21,3 +21,5 @@ npx prisma migrate dev --name init
 Puedes revisar la DB con pgAdmin o directamente:
 # Entra a la carpeta chatgetrol-backend y ejecuta:
 npx prisma studio
+
+# Actualizar Schema
